@@ -1,89 +1,78 @@
 html,
 body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /*-- HEADER -------------------------------------------------------*/
 header {
-    width: 100%;
-    height: 100px;
-    background-color: red;
-    position: absolute;
-    top: 0;
+  width: 100%;
+  height: 100px;
+  background-color: red;
+  position: absolute;
+  top: 0;
 
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 /*-- MAIN ---------------------------------------------------------*/
 main {
-    min-width: 500px;
-    width: 60vw;
-    aspect-ratio: 1.48;
-    margin: 3em auto;
-    
-    background-image: url('../img/ground1.jpg');
-    background-position: center;
-    background-size: cover;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+  min-width: 500px;
+  width: 60vw;
+  aspect-ratio: 1.48;
+  margin: 3em auto;
 
-    perspective: 1000px;
+  background-image: url('../img/ground1.jpg');
+  background-position: center;
+  background-size: cover;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  perspective: 1000px;
 }
 
 div.card {
-    width: 70px;
-    height: 100px;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.6s;
+  width: 70px;
+  height: 100px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
 }
 
 div.front,
 div.back {
-    width: 100%;
-    height: 100%;
-    font-size: 2.5em;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    backface-visibility: hidden;
+  width: 100%;
+  height: 100%;
+  font-size: 2.5em;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  backface-visibility: hidden;
 }
 
 div.front {
-    background-color: white;
-    transform: rotateY(0deg)
+  background-color: white;
+  transform: rotateY(0deg);
 }
 
 div.back {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: rotateY(180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateY(180deg);
 }
 
 div.back img {
-    width: 190%;
+  width: 190%;
 }
 
 div.card:hover {
-    transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
