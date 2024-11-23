@@ -3,20 +3,25 @@ let totalCards = 0;
 const playGround = document.getElementById('playGround');
 let discoveredCards = [];
 const movesDoneLabel = document.querySelector('#moves span');
-let movesDoneCounter = 0;
+let movesDoneCounter;
 const maxMovesLabel = document.querySelector('#moves span:last-of-type');
 let maxMovesCounter = 5;
+let timer;
+const timerMinutes = document.querySelector('#timer span');
+const timerSeconds = document.querySelector('#timer span:last-of-type');
 
 document.addEventListener('load', init());
 
 function init() {
   playGround.innerHTML = '';
+  movesDoneCounter = 0;
   upgradeMoves();
   maxMovesLabel.innerText = maxMovesCounter;
   dealCards(shuffleCards(cardsImages));
 
-  // set time start
-  // set done moves to zero
+  const maxTime = 30;
+  upgradeTimer(maxTime);
+  timer = startTimer(maxTime);
 }
 
 function shuffleCards(arr) {
@@ -95,12 +100,17 @@ function checkCards(arrCards) {
 }
 
 function endGame(str) {
+  clearInterval(timer);
   switch (str) {
     case 'Win':
       alert('Complimenti hai completato il gioco');
       break;
-    case 'GameOver':
+    case 'Moves':
       alert('Troppe mosse, andrà meglio la prossima volta');
+      break;
+    case 'Time':
+      // alert('Tempo scaduto, andrà meglio la prossima volta');
+      playGround.innerHTML = '';
       break;
     default:
       alert('Errore');
@@ -115,7 +125,27 @@ function upgradeMoves() {
   }
   if (movesDoneCounter == maxMovesLabel.innerText) {
     setTimeout(() => {
-      endGame('GameOver');
+      endGame('Moves');
     }, 1100);
   }
+}
+
+function startTimer(maxTime) {
+  seconds = maxTime;
+  timer = setInterval(() => {
+    seconds--;
+    upgradeTimer(seconds);
+    if (seconds === 0) {
+      clearInterval(timer);
+      return endGame('Time');
+    }
+  }, 1000);
+  return timer;
+}
+
+function upgradeTimer(seconds) {
+  if (seconds < 10) {
+    seconds = '0' + seconds;
+  }
+  timerSeconds.innerText = seconds;
 }
