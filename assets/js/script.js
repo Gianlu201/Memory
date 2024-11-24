@@ -80,18 +80,21 @@ function checkCards(arrCards) {
     setTimeout(() => {
       arrCards.forEach((card) => {
         card.classList.replace('discovered', 'hidden');
+        return true;
       });
     }, 1000);
     const foundCards = document.querySelectorAll('#playGround .hidden');
     if (foundCards.length === totalCards - 2) {
       setTimeout(() => {
         endGame('Win');
+        return 'fine';
       }, 1100);
     }
   } else {
     setTimeout(() => {
       arrCards.forEach((card) => {
         card.classList.replace('discovered', 'covered');
+        return false;
       });
     }, 1000);
   }

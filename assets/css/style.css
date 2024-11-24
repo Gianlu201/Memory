@@ -2,8 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  user-select: none;
 }
 
+body {
+  background-color: cecece;
+}
 /*-- HEADER -------------------------------------------------------*/
 header {
   width: 100%;
@@ -30,6 +34,9 @@ main {
   width: 60vw;
   aspect-ratio: 1.48;
   margin: 30px auto;
+
+  border-radius: 30px;
+  border: 2px solid black;
 
   background-image: url('../img/ground2.png');
   background-position: center;
